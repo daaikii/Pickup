@@ -1,0 +1,26 @@
+<div class="container ">
+    <div class="row">
+        <h3 class="justify-content-center col"><%= @post.user.name %></h3>
+        <%if @post.user.image?%>
+            <%= image_tag @post.user.image.url%>
+        <%else%>
+            <%= image_tag "/assets/default.jpg" %>
+        <%end%>
+    </div>
+</div>
+<div>
+    <%=form_with(model: @post,local: true)do|f|%>
+        <%=render'layouts/error_messages',model: f.object%>
+        
+        <div class="form_group">
+            <h3>画像を選ぶ</h3>
+            <%= f.file_field :img, accept: 'img/jpeg,img/gif,img/png' %>
+        </div>
+        
+        <div class="form_group">
+            <%= f.label:comment,'コメント'%>
+            <%= f.text_field:comment,class:'form-control'%>
+        </div>
+        <%= f.submit '作成', class: 'btn btn-primary btn-block' %>
+    <%end%>
+</div>

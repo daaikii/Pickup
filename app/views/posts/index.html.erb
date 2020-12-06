@@ -1,0 +1,11 @@
+<div class="text-center">
+    <h3>投稿一覧</h3>
+</div>
+<div>
+    <%@posts.each do|post|%>
+        <%= link_to post_path(post.id) do %>
+            <%= image_tag post.img.url %>
+        <% end %>
+    <%end%>
+</div>
+<%= paginate @posts %>
